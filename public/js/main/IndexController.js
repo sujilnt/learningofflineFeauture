@@ -10,6 +10,13 @@ export default function IndexController(container) {
   this._openSocket();
 }
 
+IndexController.prototype._regiesterServierWorker = function(){
+  if(navigator.serviceWorker){
+    navigator.serviceWorker.register("./sw.js").then(()=>{
+      console.log("service worker registered");
+    });
+  }
+};
 // open a connection to the server for live updates
 IndexController.prototype._openSocket = function() {
   var indexController = this;
